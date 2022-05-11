@@ -1,0 +1,9 @@
+﻿<Application x:Class="KUKA_KRL_PARSER.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:KUKA_KRL_PARSER"
+             StartupUri="GetDataWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
