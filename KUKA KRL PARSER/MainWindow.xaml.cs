@@ -79,6 +79,7 @@ namespace KUKA_KRL_PARSER
 
         string saveStartSRC;
         string saveStartDAT;
+        bool isSRC;
 
         public MainWindow()
         {
@@ -90,6 +91,7 @@ namespace KUKA_KRL_PARSER
             saveStartSRC = srcStartText;
             saveStartDAT = datStartText;
             KRL_CODE.Text = srcStartText;
+            isSRC = true;
         }
 
         private void Add_Command(object sender, RoutedEventArgs e)
@@ -125,6 +127,8 @@ namespace KUKA_KRL_PARSER
 
         }
 
+       
+
         private void Redo_Command(object sender, RoutedEventArgs e)
         {
             srcStartText = saveStartSRC;
@@ -136,13 +140,25 @@ namespace KUKA_KRL_PARSER
         private void showSRC(object sender, RoutedEventArgs e)
         {
             KRL_CODE.Text = srcStartText;
+            isSRC = true;
         }
 
         private void showDAT(object sender, RoutedEventArgs e)
         {
             KRL_CODE.Text = datStartText;
+            isSRC = false;
         }
 
-
+        private void KRL_CODE_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (isSRC)
+            {
+                srcStartText = KRL_CODE.Text;
+            }
+            else
+            {
+                datStartText = KRL_CODE.Text;
+            }
+        }
     }
 }
