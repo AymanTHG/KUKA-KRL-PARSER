@@ -130,6 +130,7 @@ namespace KUKA_KRL_PARSER
             srcStartText = saveStartSRC;
             datStartText = saveStartDAT;
             KRL_CODE.Text = saveStartSRC;
+            amountOfCommands = 1;
         }
 
         private void showSRC(object sender, RoutedEventArgs e)

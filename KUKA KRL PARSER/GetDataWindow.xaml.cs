@@ -57,12 +57,24 @@ namespace KUKA_KRL_PARSER
 
             
             String input = File.ReadAllText(PathToEMI);
+            string checkforRecords = "";
             input = Regex.Replace(input, " {2,}", " ");
             input = input.Replace('.', ',');
-            input = input.Remove(0, 93);
+
+            while(!checkforRecords.Contains("[RECORDS]"))
+            {
+                checkforRecords += input.Substring(0,1);
+                input = input.Remove(0, 1);
+                Console.WriteLine(checkforRecords);
+               
+            }
+
+            input = input.Remove(0, 1);
             input = input.Remove(input.Length - 7);
             Console.WriteLine(input);
+          
             int i = 0, j = 0;
+           
            
             float[,] values = new float[File.ReadLines(PathToEMI).Count(), 9];
             foreach (var row in input.Split('\n'))
@@ -82,7 +94,7 @@ namespace KUKA_KRL_PARSER
                 
                
             }
-            Console.WriteLine(values);
+            
             MainWindow._mainWindow.values = values;
             Close();
         }
