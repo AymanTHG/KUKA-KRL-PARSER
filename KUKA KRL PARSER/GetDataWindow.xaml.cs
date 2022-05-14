@@ -65,14 +65,13 @@ namespace KUKA_KRL_PARSER
             {
                 checkforRecords += input.Substring(0,1);
                 input = input.Remove(0, 1);
-                Console.WriteLine(checkforRecords);
+            
                
             }
 
             input = input.Remove(0, 1);
             input = input.Remove(input.Length - 7);
-            Console.WriteLine(input);
-          
+       
             int i = 0, j = 0;
            
            

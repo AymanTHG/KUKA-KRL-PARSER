@@ -79,8 +79,7 @@ namespace KUKA_KRL_PARSER
 
         string saveStartSRC;
         string saveStartDAT;
-        bool isSRC;
-
+        bool isSRC = true;
         public MainWindow()
         {
             InitializeComponent();
@@ -91,7 +90,7 @@ namespace KUKA_KRL_PARSER
             saveStartSRC = srcStartText;
             saveStartDAT = datStartText;
             KRL_CODE.Text = srcStartText;
-            isSRC = true;
+            
         }
 
         private void Add_Command(object sender, RoutedEventArgs e)
@@ -118,6 +117,16 @@ namespace KUKA_KRL_PARSER
                 string pathSRC = path + "/src.txt";
                 string pathDAT = path + "/dat.txt";
 
+
+                if(isSRC)
+                {
+                    srcStartText = KRL_CODE.Text;
+                }
+                else
+                {
+                    datStartText = KRL_CODE.Text;
+                }
+
                 File.WriteAllText(pathSRC, srcStartText);
                 File.WriteAllText(pathDAT, datStartText);
             }
@@ -139,26 +148,34 @@ namespace KUKA_KRL_PARSER
 
         private void showSRC(object sender, RoutedEventArgs e)
         {
+            datStartText = KRL_CODE.Text;
             KRL_CODE.Text = srcStartText;
-            isSRC = true;
+           isSRC = true;
+           
         }
 
         private void showDAT(object sender, RoutedEventArgs e)
         {
+            srcStartText = KRL_CODE.Text;
             KRL_CODE.Text = datStartText;
+
             isSRC = false;
+         
         }
 
-        private void KRL_CODE_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (isSRC)
-            {
-                srcStartText = KRL_CODE.Text;
-            }
-            else
-            {
-                datStartText = KRL_CODE.Text;
-            }
-        }
+        /*private void KRL_CODE_TextChanged(object sender, TextChangedEventArgs e)
+        {          
+                if (isSRC)
+                {
+                    srcStartText = KRL_CODE.Text;
+                    Console.WriteLine("hey1");
+                }
+                else
+                {
+                    datStartText = KRL_CODE.Text;
+                    Console.WriteLine("hey2");
+                }
+        
+        }*/
     }
 }
