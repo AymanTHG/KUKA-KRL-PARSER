@@ -142,7 +142,16 @@ namespace KUKA_KRL_PARSER
         {
             srcStartText = saveStartSRC;
             datStartText = saveStartDAT;
-            KRL_CODE.Text = saveStartSRC;
+            if(isSRC)
+            {
+                KRL_CODE.Text = srcStartText;
+            }
+            else
+            {
+                KRL_CODE.Text = datStartText;
+            }
+
+           
             amountOfCommands = 1;
         }
 
