@@ -55,7 +55,7 @@ namespace KUKA_KRL_PARSER
                                      ";ENDFOLD" + "\n";
                         
                         MainWindow._mainWindow.srcStartText += Lin;
-                        MainWindow._mainWindow.KRL_CODE.Text = MainWindow._mainWindow.srcStartText;
+                       
 
                         string datLin = "DECL E6POS XP" + MainWindow._mainWindow.amountOfCommands.ToString()
                             + "={X "+ MainWindow._mainWindow.values[MainWindow._mainWindow.amountOfCommands,1].ToString().Replace(',','.') 
@@ -72,6 +72,15 @@ namespace KUKA_KRL_PARSER
                         MainWindow._mainWindow.datStartText += datLin;
                         MainWindow._mainWindow.amountOfCommands++;
 
+
+                        if(MainWindow._mainWindow.isSRC)
+                        {
+                            MainWindow._mainWindow.KRL_CODE.Text = MainWindow._mainWindow.srcStartText;
+                        }
+                        else
+                        {
+                            MainWindow._mainWindow.KRL_CODE.Text = MainWindow._mainWindow.datStartText;
+                        }
                         
                       
                     }
@@ -104,7 +113,7 @@ namespace KUKA_KRL_PARSER
                                          ";ENDFOLD" + "\n";
 
                             MainWindow._mainWindow.srcStartText += PTP;
-                            MainWindow._mainWindow.KRL_CODE.Text = MainWindow._mainWindow.srcStartText;
+                            
 
                             string datPTP = "DECL E6POS XP" + MainWindow._mainWindow.amountOfCommands.ToString()
                                 + "={X " + MainWindow._mainWindow.values[MainWindow._mainWindow.amountOfCommands, 1].ToString().Replace(',', '.')
@@ -121,7 +130,17 @@ namespace KUKA_KRL_PARSER
                             MainWindow._mainWindow.datStartText += datPTP;
                             MainWindow._mainWindow.amountOfCommands++;
 
-                           
+
+                        if (MainWindow._mainWindow.isSRC)
+                        {
+                            MainWindow._mainWindow.KRL_CODE.Text = MainWindow._mainWindow.srcStartText;
+                        }
+                        else
+                        {
+                            MainWindow._mainWindow.KRL_CODE.Text = MainWindow._mainWindow.datStartText;
+                        }
+
+
                     }
 
                     break;

@@ -79,16 +79,19 @@ namespace KUKA_KRL_PARSER
 
         string saveStartSRC;
         string saveStartDAT;
-        bool isSRC = true;
+        public bool isSRC = true;
         public MainWindow()
         {
             InitializeComponent();
-            Console.WriteLine(srcStartText);
-            pathToEMI = GetDataWindow._getDataWindow.PathToEMI;
-            Console.WriteLine(pathToEMI);
+
             _mainWindow = this;
+
+            pathToEMI = GetDataWindow._getDataWindow.PathToEMI;
+                  
             saveStartSRC = srcStartText;
+
             saveStartDAT = datStartText;
+
             KRL_CODE.Text = srcStartText;
             
         }
@@ -118,14 +121,7 @@ namespace KUKA_KRL_PARSER
                 string pathDAT = path + "/dat.txt";
 
 
-                if(isSRC)
-                {
-                    srcStartText = KRL_CODE.Text;
-                }
-                else
-                {
-                    datStartText = KRL_CODE.Text;
-                }
+                
 
                 File.WriteAllText(pathSRC, srcStartText);
                 File.WriteAllText(pathDAT, datStartText);
@@ -158,12 +154,11 @@ namespace KUKA_KRL_PARSER
 
         private void showSRC(object sender, RoutedEventArgs e)
         {
-            if(!isSRC)
-            {
-                datStartText = KRL_CODE.Text;
+            
+               isSRC = true;
                 KRL_CODE.Text = srcStartText;
-                isSRC = true;
-            }
+                
+            
           
            
         }
@@ -171,29 +166,27 @@ namespace KUKA_KRL_PARSER
         private void showDAT(object sender, RoutedEventArgs e)
         {
 
-            if (isSRC)
-            {
-                srcStartText = KRL_CODE.Text;
-                KRL_CODE.Text = datStartText;
 
-                isSRC = false;
-            }
+            isSRC = false;
+            KRL_CODE.Text = datStartText;
+
+                
+            
          
         }
 
-        /*private void KRL_CODE_TextChanged(object sender, TextChangedEventArgs e)
-        {          
-                if (isSRC)
-                {
-                    srcStartText = KRL_CODE.Text;
-                    Console.WriteLine("hey1");
-                }
-                else
-                {
-                    datStartText = KRL_CODE.Text;
-                    Console.WriteLine("hey2");
-                }
-        
-        }*/
+        private void KRL_CODE_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (isSRC)
+            {
+
+                srcStartText = KRL_CODE.Text;
+
+            }
+            else
+            {
+                datStartText = KRL_CODE.Text;
+            }
+        }
     }
 }

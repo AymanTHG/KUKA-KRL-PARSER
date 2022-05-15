@@ -54,7 +54,7 @@
             </Button>
             <Button Content="SRC" Width="50" Height="15" Canvas.Left="10" Canvas.Top="148" FontSize="10" Click="showSRC"></Button>
             <Button Content="DAT" Width="50" Height="15" Canvas.Left="65" Canvas.Top="148" FontSize="10" Click="showDAT"></Button>
-            <TextBox Name="KRL_CODE" Width="700" Height="307" Canvas.Left="10" Canvas.Top="163" FontSize="8" />
+            <TextBox Name="KRL_CODE" Width="700" Height="307" Canvas.Left="10" Canvas.Top="163" FontSize="8" TextChanged="KRL_CODE_TextChanged" />
         </Canvas>
         </Viewbox>
     
