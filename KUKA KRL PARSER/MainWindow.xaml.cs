@@ -149,6 +149,7 @@ namespace KUKA_KRL_PARSER
             else
             {
                 KRL_CODE.Text = datStartText;
+
             }
 
            
