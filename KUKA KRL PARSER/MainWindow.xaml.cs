@@ -148,18 +148,26 @@ namespace KUKA_KRL_PARSER
 
         private void showSRC(object sender, RoutedEventArgs e)
         {
-            datStartText = KRL_CODE.Text;
-            KRL_CODE.Text = srcStartText;
-           isSRC = true;
+            if(!isSRC)
+            {
+                datStartText = KRL_CODE.Text;
+                KRL_CODE.Text = srcStartText;
+                isSRC = true;
+            }
+          
            
         }
 
         private void showDAT(object sender, RoutedEventArgs e)
         {
-            srcStartText = KRL_CODE.Text;
-            KRL_CODE.Text = datStartText;
 
-            isSRC = false;
+            if (isSRC)
+            {
+                srcStartText = KRL_CODE.Text;
+                KRL_CODE.Text = datStartText;
+
+                isSRC = false;
+            }
          
         }
 
